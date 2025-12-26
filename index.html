@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JS Quiz App</title>
+</head>
+<body>
+    <div class="login">
+        <form onsubmit="formSubmit(); return false">
+                <h1>Quiz-App</h1>
+            <label for="inp1">
+                Enter Your Name : <br><br>
+            <input id="inp1" type="text" placeholder="your name" maxlength="14" required><br><br><br><br>
+            </label>
+            
+                <label for="inp2">
+                Enter Your Roll number : <br>
+            <br>
+            <input id="inp2" type="text" placeholder="your roll number" maxlength="6" required>
+            </label>
+            <br>
+            <br>
+            <button id="btn">Submit</button>
+        </form>
+    </div>
+    <div class="wc-con d-none">
+        <h1>Welcome aqeel</h1>
+
+        <p>don't forget your answer</p>
+        <H2>Goodluck 🥰</H2>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
