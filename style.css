@@ -32,6 +32,33 @@ body::before{
     font-size: 20px;
     gap: 70px;
 }
+.wc-con{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    color: white;
+    font-size: 20px;
+    gap: 30px;
+}
+.wc-con span{
+    font-size: 25px;
+}
+.wc-con::before{
+    content: "";
+    width: 50%;
+    height: 70%;
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    border: 1px solid white;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.089);
+    backdrop-filter: blur(2px); 
+    z-index: -1;
+}
 .login input{
     background-color: rgba(255, 255, 255, 0.422);
     border-radius: 50px;
