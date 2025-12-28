@@ -200,7 +200,7 @@ function showQuestion() {
 quesCon.style.display= 'flex';
 
 
-  document.getElementById("q-num").innerText = `Q ${currentIndex += 1} ` 
+  document.getElementById("q-num").innerText = `Q ${currentIndex+1} ` 
   let q = questions[currentIndex];
 
   document.getElementById("question").innerText = q.question;
@@ -237,11 +237,14 @@ function nextQues(){
     showQuestion();
   } else {
     document.body.innerHTML = `
+    <div class="finshQuiz">
       <h1>Quiz Finished 🎉</h1>
       <h2>Your Score: ${score} / ${questions.length}</h2>
-      <a href="" id="btn">Start Again </a>
+      <button onclick="showQuestion()" id="btn">Start Again</button>
+      </div>
     `;
   }
 };
 
 
+// return false;
