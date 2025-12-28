@@ -7,6 +7,7 @@
     <title>JS Quiz App</title>
 </head>
 <body>
+    <div class="timer"><img id="timer-pic" style="width: 80px;"  src="pic-fold/ChatGPT Image Dec 28, 2025, 01_49_11 PM.png" alt=""> <span id="timer">30:00</span></div>
 
     <div class="login">
         <form onsubmit="formSubmit(); return false">
@@ -32,9 +33,9 @@
         <p>Tip: <br>
             Don't forget your answer !</p>
         <p>Note: <br>
-            Once you press the Start button <br> your timer will start and if <br> you will not attempts your questions before <br> times up so you will decleared Fail !</p>
+           20 question you will be attemp Once you press the Start <br> button your 30 min timer will start and if you will <br> not attempts your questions before times up so you will decleared <br> Fail !</p>
         <H2>Goodluck 🥰</H2>
-        <button id="btn" onclick="showQuestion()">Start quiz</button>
+        <button id="btn" class="btncall" onclick="showQuestion()">Start quiz</button>
     </div>
     <div class="Ques-con">
         <h1 id="q-num"></h1><h2 id="question"></h2>
@@ -46,6 +47,10 @@
         </div>
         <button id="nextBtn" onclick="nextQues()">Next</button>
     </div>
+    <div id="progress-container">
+  <div id="progress-bar"></div>
+</div>
+<p id="progress-text">0%</p>
 
 
     <script src="script.js"></script>

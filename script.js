@@ -2,8 +2,10 @@ let form = document.querySelector('.login')
 let wcScreen = document.querySelector('.wc-con')
 let quesCon = document.querySelector('.Ques-con')
 let wcH1 = document.querySelector('.wc-con h1')
-wcScreen.style.display= 'none';
-quesCon.style.display= 'none';
+let timer = document.querySelector('.timer')  
+wcScreen.style.display= 'none'
+quesCon.style.display= 'none'
+timer.style.display= 'none'
 
 function formSubmit(){
     let userName = document.querySelector("#inp1").value
@@ -184,20 +186,23 @@ document.querySelectorAll(".option-btn").forEach(btn => {
   btn.addEventListener("click", () => {
 
     document.querySelectorAll(".option-btn")
-      .forEach(b => b.classList.remove("selected"));
+      .forEach(b => b.classList.remove("selected"))
     btn.classList.add("selected");
     selectedOption = btn.innerText;
 
-    console.log("Selected:", selectedOption);
+    console.log("Selected:", selectedOption)
   });
 });
 
-let currentIndex = 0;
+let currentIndex = 0
+
 function showQuestion() {
   
-   form.style.display= 'none';
- wcScreen.style.display= 'none';
-quesCon.style.display= 'flex';
+   form.style.display= 'none'
+ wcScreen.style.display= 'none'
+quesCon.style.display= 'flex'
+timer.style.display= 'flex'
+
 
 
   document.getElementById("q-num").innerText = `Q ${currentIndex+1} ` 
@@ -205,14 +210,13 @@ quesCon.style.display= 'flex';
 
   document.getElementById("question").innerText = q.question;
 
-  let optionBtns = document.querySelectorAll(".option-btn");
+  let optionBtns = document.querySelectorAll(".option-btn")
 
   optionBtns.forEach((btn, index) => {
-    btn.innerText = q.options[index];
+    btn.innerText = q.options[index]
     btn.classList.remove("selected");
-
     document.getElementById("nextBtn").innerText =
-    currentIndex === questions.length - 1 ? "Finish" : "Next";
+    currentIndex === questions.length - 1 ? "Finish" : "Next"
   });
 }
  
@@ -222,7 +226,7 @@ let score = 0;
 function nextQues(){
 
   if (selectedOption === "") {
-    alert("Pehle option select karo 😅");
+    alert("please Select Atleast one option");
     return;
   }
 
@@ -238,7 +242,7 @@ function nextQues(){
   } else {
     document.body.innerHTML = `
     <div class="finshQuiz">
-      <h1>Quiz Finished 🎉</h1>
+      <h1>Quiz Finished</h1>
       <h2>Your Score: ${score} / ${questions.length}</h2>
       <button onclick="showQuestion()" id="btn">Start Again</button>
       </div>
@@ -246,5 +250,43 @@ function nextQues(){
   }
 };
 
+let totalTime = 30 * 60
+let Timer
+  function startTimer() {
+  Timer = setInterval(() => {
 
+    let minutes = Math.floor(totalTime / 60);
+    let seconds = totalTime % 60;
+
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    document.getElementById("timer").innerText =
+      `${minutes}:${seconds}`;
+
+    totalTime--;
+
+    if (totalTime < 0) {
+      clearInterval(Timer);
+      finishQuiz();
+    }
+
+  }, 1000);
+}
+function finishQuiz() {
+  document.body.innerHTML = 
+  `<div class="finshQuiz">
+    <h1>Time Over!</h1>
+    <h2>Your Score: ${score} / ${questions.length}</h2>
+    </div>
+  `;
+}
+
+
+let startTimerCallBtn = document.querySelector('.btncall')
+startTimerCallBtn.style.anmationName= 'rrotat'
+startTimerCallBtn.addEventListener('click',()=>{ 
+startTimerCallBtn.style.anmationName= 'rotation'
+
+  startTimer()
+})
 // return false;
