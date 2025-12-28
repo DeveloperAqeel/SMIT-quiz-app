@@ -178,7 +178,7 @@ const questions = [
   }
 ];
 
-let selectedOption = null;
+let selectedOption = "";
 // console.log(selectedOption)
 document.querySelectorAll(".option-btn").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -194,13 +194,13 @@ document.querySelectorAll(".option-btn").forEach(btn => {
 
 let currentIndex = 0;
 function showQuestion() {
-
+  
    form.style.display= 'none';
  wcScreen.style.display= 'none';
 quesCon.style.display= 'flex';
 
 
-  document.getElementById("q-num").innerText = `Q ${currentIndex += 1}` 
+  document.getElementById("q-num").innerText = `Q ${currentIndex += 1} ` 
   let q = questions[currentIndex];
 
   document.getElementById("question").innerText = q.question;
@@ -210,6 +210,38 @@ quesCon.style.display= 'flex';
   optionBtns.forEach((btn, index) => {
     btn.innerText = q.options[index];
     btn.classList.remove("selected");
+
+    document.getElementById("nextBtn").innerText =
+    currentIndex === questions.length - 1 ? "Finish" : "Next";
   });
 }
+ 
+// let selectedAnswer = "";
+let score = 0;
+
+function nextQues(){
+
+  if (selectedOption === "") {
+    alert("Pehle option select karo 😅");
+    return;
+  }
+
+  if (selectedOption === questions[currentIndex].correct) {
+    score++;
+  }
+
+  currentIndex++;
+  selectedOption = "";
+
+  if (currentIndex < questions.length) {
+    showQuestion();
+  } else {
+    document.body.innerHTML = `
+      <h1>Quiz Finished 🎉</h1>
+      <h2>Your Score: ${score} / ${questions.length}</h2>
+      <a href="" id="btn">Start Again </a>
+    `;
+  }
+};
+
 
