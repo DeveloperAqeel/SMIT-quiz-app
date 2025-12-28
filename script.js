@@ -1,7 +1,9 @@
 let form = document.querySelector('.login')
 let wcScreen = document.querySelector('.wc-con')
+let quesCon = document.querySelector('.Ques-con')
 let wcH1 = document.querySelector('.wc-con h1')
 wcScreen.style.display= 'none';
+quesCon.style.display= 'none';
 
 function formSubmit(){
     let userName = document.querySelector("#inp1").value
@@ -11,7 +13,6 @@ function formSubmit(){
     userRollNum
  }
  localStorage.setItem('userData',JSON.stringify(userData))
-//  console.log(userData.userName)
  form.style.display= 'none';
  wcScreen.style.display= 'flex';
 
@@ -19,205 +20,196 @@ function formSubmit(){
 
 }
 
-const quizQuestions = [
+const questions = [
   {
     question: "JavaScript kis type ki language hai?",
-    options: {
-      a: "Markup Language",
-      b: "Styling Language",
-      c: "Programming Language",
-      d: "Database Language"
-    },
-    correct: "c"
+    options: ["Compiled", "Interpreted", "Markup", "Styling"],
+    correct: "Interpreted"
   },
   {
-    question: "JavaScript ko kis tag ke andar likha jata hai?",
-    options: {
-      a: "<js>",
-      b: "<javascript>",
-      c: "<script>",
-      d: "<code>"
-    },
-    correct: "c"
+    question: "JS ka full form kya hai?",
+    options: ["Java Source", "JavaScript", "Just Script", "Json Script"],
+    correct: "JavaScript"
+  },
+  {
+    question: "JavaScript ko kis tag mein likhte hain?",
+    options: ["<js>", "<javascript>", "<script>", "<code>"],
+    correct: "<script>"
+  },
+  {
+    question: "JavaScript browser mein kahan run hoti hai?",
+    options: ["Server", "Compiler", "Browser", "Database"],
+    correct: "Browser"
   },
   {
     question: "Variable declare karne ke liye kaunsa keyword use hota hai?",
-    options: {
-      a: "var",
-      b: "let",
-      c: "const",
-      d: "All of these"
-    },
-    correct: "d"
+    options: ["var", "int", "string", "float"],
+    correct: "var"
   },
   {
-    question: "let aur const mein main difference kya hai?",
-    options: {
-      a: "let redeclare hota hai",
-      b: "const ki value change nahi hoti",
-      c: "let global hota hai",
-      d: "const function hota hai"
-    },
-    correct: "b"
-  },
-  {
-    question: "JavaScript mein function ka kaam kya hai?",
-    options: {
-      a: "HTML likhna",
-      b: "CSS apply karna",
-      c: "Code reuse karna",
-      d: "Database connect"
-    },
-    correct: "c"
-  },
-  {
-    question: "Arrow function ka syntax kya hai?",
-    options: {
-      a: "function =>",
-      b: "() => {}",
-      c: "=> function()",
-      d: "() -> {}"
-    },
-    correct: "b"
+    question: "Kaunsa keyword constant value ke liye use hota hai?",
+    options: ["var", "let", "const", "static"],
+    correct: "const"
   },
   {
     question: "Array ka index kis number se start hota hai?",
-    options: {
-      a: "1",
-      b: "0",
-      c: "-1",
-      d: "2"
-    },
-    correct: "b"
+    options: ["0", "1", "-1", "2"],
+    correct: "0"
   },
   {
-    question: "Object kis format mein data store karta hai?",
-    options: {
-      a: "key : value",
-      b: "index : value",
-      c: "value : key",
-      d: "row : column"
-    },
-    correct: "a"
+    question: "JavaScript mein function kaise banate hain?",
+    options: [
+      "function myFunc()",
+      "def myFunc()",
+      "create myFunc()",
+      "func myFunc()"
+    ],
+    correct: "function myFunc()"
   },
   {
-    question: "=== operator kya check karta hai?",
-    options: {
-      a: "Sirf value",
-      b: "Sirf type",
-      c: "Value aur type dono",
-      d: "Kuch bhi nahi"
-    },
-    correct: "c"
+    question: "DOM ka full form kya hai?",
+    options: [
+      "Document Object Model",
+      "Data Object Method",
+      "Document Oriented Model",
+      "Dynamic Object Model"
+    ],
+    correct: "Document Object Model"
   },
   {
-    question: "NaN ka matlab kya hai?",
-    options: {
-      a: "New and New",
-      b: "Not a Name",
-      c: "Not a Number",
-      d: "No any Number"
-    },
-    correct: "c"
+    question: "document.getElementById kya return karta hai?",
+    options: ["Array", "String", "HTML Element", "Number"],
+    correct: "HTML Element"
   },
   {
-    question: "LocalStorage mein data kis form mein save hota hai?",
-    options: {
-      a: "Number",
-      b: "Object",
-      c: "Array",
-      d: "String"
-    },
-    correct: "d"
+    question: "forEach kis par use hota hai?",
+    options: ["Object", "Array", "String", "Number"],
+    correct: "Array"
   },
   {
-    question: "JSON.stringify ka use kya hai?",
-    options: {
-      a: "String ko object banana",
-      b: "Object ko string banana",
-      c: "Data delete",
-      d: "Array banana"
-    },
-    correct: "b"
+    question: "JavaScript mein == aur === mein kya farq hai?",
+    options: [
+      "Koi farq nahi",
+      "=== type bhi check karta hai",
+      "== fast hota hai",
+      "=== slow hota hai"
+    ],
+    correct: "=== type bhi check karta hai"
   },
   {
-    question: "JSON.parse ka kaam kya hai?",
-    options: {
-      a: "String ko object banana",
-      b: "Object ko string banana",
-      c: "Loop chalana",
-      d: "Condition check"
-    },
-    correct: "a"
+    question: "alert() function ka kya kaam hai?",
+    options: [
+      "Console mein print",
+      "Popup show",
+      "HTML change",
+      "Page reload"
+    ],
+    correct: "Popup show"
   },
   {
-    question: "Event listener ka use kya hai?",
-    options: {
-      a: "CSS lagana",
-      b: "User action handle",
-      c: "HTML likhna",
-      d: "Database connect"
-    },
-    correct: "b"
+    question: "console.log ka use kyun hota hai?",
+    options: [
+      "Data save",
+      "Debugging",
+      "Alert show",
+      "HTML design"
+    ],
+    correct: "Debugging"
   },
   {
-    question: "setTimeout kis liye use hota hai?",
-    options: {
-      a: "Loop",
-      b: "Delay",
-      c: "Animation only",
-      d: "Condition"
-    },
-    correct: "b"
+    question: "JavaScript mein comment kaise likhte hain?",
+    options: [
+      "// comment",
+      "<!-- comment -->",
+      "# comment",
+      "** comment **"
+    ],
+    correct: "// comment"
   },
   {
-    question: "for loop ka use kya hai?",
-    options: {
-      a: "Condition",
-      b: "Function",
-      c: "Repeat code",
-      d: "Design"
-    },
-    correct: "c"
+    question: "Event listener add karne ka method kaunsa hai?",
+    options: [
+      "addEventListener()",
+      "addEvent()",
+      "onClick()",
+      "listenEvent()"
+    ],
+    correct: "addEventListener()"
   },
   {
-    question: "Prompt ka use kya hai?",
-    options: {
-      a: "Output show",
-      b: "Input lena",
-      c: "Alert",
-      d: "Confirm"
-    },
-    correct: "b"
+    question: "Math.random() kya return karta hai?",
+    options: [
+      "0 se 1 ke darmiyan number",
+      "Sirf 1",
+      "Integer value",
+      "String"
+    ],
+    correct: "0 se 1 ke darmiyan number"
   },
   {
-    question: "Confirm box kya return karta hai?",
-    options: {
-      a: "String",
-      b: "Number",
-      c: "Boolean",
-      d: "Object"
-    },
-    correct: "c"
+    question: "JavaScript mein null ka matlab kya hai?",
+    options: [
+      "Undefined",
+      "Empty value",
+      "Zero",
+      "False"
+    ],
+    correct: "Empty value"
   },
   {
-    question: "typeof operator ka use kya hai?",
-    options: {
-      a: "Value change",
-      b: "Data type check",
-      c: "Loop",
-      d: "Condition"
-    },
-    correct: "b"
+    question: "setTimeout ka use kya hai?",
+    options: [
+      "Loop chalana",
+      "Delay ke baad function run",
+      "Page reload",
+      "Animation stop"
+    ],
+    correct: "Delay ke baad function run"
   },
   {
-    question: "JavaScript file ka extension kya hota hai?",
-    options: {
-      a: ".java",
-      b: ".jsx",
-      c: ".js",
-      d: ".json"
-    },
-    correct: "c"
+    question: "LocalStorage kis cheez ke liye use hota hai?",
+    options: [
+      "Temporary data",
+      "Browser mein data save",
+      "Server storage",
+      "API call"
+    ],
+    correct: "Browser mein data save"
   }
 ];
+
+let selectedOption = null;
+// console.log(selectedOption)
+document.querySelectorAll(".option-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    document.querySelectorAll(".option-btn")
+      .forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    selectedOption = btn.innerText;
+
+    console.log("Selected:", selectedOption);
+  });
+});
+
+let currentIndex = 0;
+function showQuestion() {
+
+   form.style.display= 'none';
+ wcScreen.style.display= 'none';
+quesCon.style.display= 'flex';
+
+
+  document.getElementById("q-num").innerText = `Q ${currentIndex += 1}` 
+  let q = questions[currentIndex];
+
+  document.getElementById("question").innerText = q.question;
+
+  let optionBtns = document.querySelectorAll(".option-btn");
+
+  optionBtns.forEach((btn, index) => {
+    btn.innerText = q.options[index];
+    btn.classList.remove("selected");
+  });
+}
+
