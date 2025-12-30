@@ -7,9 +7,9 @@ wcScreen.style.display= 'none'
 quesCon.style.display= 'none'
 timer.style.display= 'none'
 
+let userName = document.querySelector("#inp1").value
+let userRollNum = document.querySelector("#inp2").value
 function formSubmit(){
-    let userName = document.querySelector("#inp1").value
-    let userRollNum = document.querySelector("#inp2").value
  const userData = {
     userName,
     userRollNum
@@ -236,14 +236,26 @@ function nextQues(){
 
   currentIndex++;
   selectedOption = "";
-
+  let gret70 = ""
+  let cong= ""
+  let percentage =((score / questions.length) * 100).toFixed(2);  
   if (currentIndex < questions.length) {
     showQuestion();
   } else {
+    if(percentage>= 70){
+      gret70= "Congratulations! You have passed the quiz with good score.";
+      cong= "🎉🎉🎉 Congratulations! 🎉🎉🎉"
+    }
+    else if(percentage>= 40){
+       gret70= "Good effort! You have scored average in the quiz.";
+      cong= "👍👍👍 Good Effort! 👍👍👍"
+    }
     document.body.innerHTML = `
     <div class="finshQuiz">
-      <h1>Quiz Finished</h1>
+      <h1>${cong}${userName}</h1>
+      <h2>${gret70}</h2>
       <h2>Your Score: ${score} / ${questions.length}</h2>
+      <h2>Your percentage: ${percentage}%</h2>
       <button onclick="showQuestion()" id="btn">Start Again</button>
       </div>
     `;
@@ -277,6 +289,7 @@ function finishQuiz() {
   `<div class="finshQuiz">
     <h1>Time Over!</h1>
     <h2>Your Score: ${score} / ${questions.length}</h2>
+    <button id="btn">Start Again</button>
     </div>
   `;
 }
