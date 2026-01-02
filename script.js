@@ -2,23 +2,25 @@ let form = document.querySelector('.login')
 let wcScreen = document.querySelector('.wc-con')
 let quesCon = document.querySelector('.Ques-con')
 let wcH1 = document.querySelector('.wc-con h1')
-let timer = document.querySelector('.timer')  
-wcScreen.style.display= 'none'
-quesCon.style.display= 'none'
-timer.style.display= 'none'
-
-let userName = document.querySelector("#inp1").value
-let userRollNum = document.querySelector("#inp2").value
-function formSubmit(){
- const userData = {
+let timer = document.querySelector('.timer')
+wcScreen.style.display = 'none'
+quesCon.style.display = 'none'
+timer.style.display = 'none'
+let userName = ""
+let RollNum = ""
+function formSubmit() {
+  userName = document.querySelector("#inp1").value
+  userRollNum = document.querySelector("#inp2").value
+  // console.log(userName);
+  const userData = {
     userName,
     userRollNum
- }
- localStorage.setItem('userData',JSON.stringify(userData))
- form.style.display= 'none';
- wcScreen.style.display= 'flex';
+  }
+  localStorage.setItem('userData', JSON.stringify(userData))
+  form.style.display = 'none';
+  wcScreen.style.display = 'flex';
 
- wcH1.innerHTML=`Welcome ${userName}`
+  wcH1.innerHTML = `Welcome ${userName}`
 
 }
 
@@ -197,15 +199,15 @@ document.querySelectorAll(".option-btn").forEach(btn => {
 let currentIndex = 0
 
 function showQuestion() {
-  
-   form.style.display= 'none'
- wcScreen.style.display= 'none'
-quesCon.style.display= 'flex'
-timer.style.display= 'flex'
+
+  form.style.display = 'none'
+  wcScreen.style.display = 'none'
+  quesCon.style.display = 'flex'
+  timer.style.display = 'flex'
 
 
 
-  document.getElementById("q-num").innerText = `Q ${currentIndex+1} ` 
+  document.getElementById("q-num").innerText = `Q ${currentIndex + 1} `
   let q = questions[currentIndex];
 
   document.getElementById("question").innerText = q.question;
@@ -216,15 +218,16 @@ timer.style.display= 'flex'
     btn.innerText = q.options[index]
     btn.classList.remove("selected");
     document.getElementById("nextBtn").innerText =
-    currentIndex === questions.length - 1 ? "Finish" : "Next"
+      currentIndex === questions.length - 1 ? "Finish" : "Next"
   });
 }
- 
+
 // let selectedAnswer = "";
 let score = 0;
 
-function nextQues(){
 
+function nextQues() {
+  
   if (selectedOption === "") {
     alert("please Select Atleast one option");
     return;
@@ -233,38 +236,45 @@ function nextQues(){
   if (selectedOption === questions[currentIndex].correct) {
     score++;
   }
-
+  
   currentIndex++;
   selectedOption = "";
   let gret70 = ""
-  let cong= ""
-  let percentage =((score / questions.length) * 100).toFixed(2);  
+  let cong = ""
+  let percentage = ((score / questions.length) * 100).toFixed(2);
   if (currentIndex < questions.length) {
     showQuestion();
   } else {
-    if(percentage>= 70){
-      gret70= "Congratulations! You have passed the quiz with good score.";
-      cong= "🎉🎉🎉 Congratulations! 🎉🎉🎉"
+    if (percentage >= 70) {
+      gret70 = "Congratulations! You have passed the quiz with good score.";
+      cong = " Congratulations! "
     }
-    else if(percentage>= 40){
-       gret70= "Good effort! You have scored average in the quiz.";
-      cong= "👍👍👍 Good Effort! 👍👍👍"
+    else if (percentage >= 40) {
+      gret70 = "Good effort! You have scored average in the quiz.";
+      cong = " Good Effort! "
     }
     document.body.innerHTML = `
     <div class="finshQuiz">
-      <h1>${cong}${userName}</h1>
-      <h2>${gret70}</h2>
-      <h2>Your Score: ${score} / ${questions.length}</h2>
-      <h2>Your percentage: ${percentage}%</h2>
-      <button onclick="showQuestion()" id="btn">Start Again</button>
-      </div>
+    <h1>🎉🎉🎉${cong}${userName}🎉🎉🎉</h1>
+    <h2>${gret70}</h2>
+    <h2>Your Score: ${score} / ${questions.length}</h2>
+    <h2>Your percentage: ${percentage}%</h2>
+    <button id="btn" class="startAgain">Start Again</button>
+    </div>
     `;
+    document.querySelector(".startAgain")?.addEventListener("click", () => {
+      showQuestion();
+      currentIndex = 0;
+      score = 0;
+      totalTime = 20 * 60
+      startTimer()
+  });
   }
 };
 
-let totalTime = 30 * 60
+let totalTime = 20 * 60
 let Timer
-  function startTimer() {
+function startTimer() {
   Timer = setInterval(() => {
 
     let minutes = Math.floor(totalTime / 60);
@@ -285,8 +295,8 @@ let Timer
   }, 1000);
 }
 function finishQuiz() {
-  document.body.innerHTML = 
-  `<div class="finshQuiz">
+  document.body.innerHTML =
+    `<div class="finshQuiz">
     <h1>Time Over!</h1>
     <h2>Your Score: ${score} / ${questions.length}</h2>
     <button id="btn">Start Again</button>
@@ -294,11 +304,10 @@ function finishQuiz() {
   `;
 }
 
-
 let startTimerCallBtn = document.querySelector('.btncall')
-startTimerCallBtn.style.anmationName= 'rrotat'
-startTimerCallBtn.addEventListener('click',()=>{ 
-startTimerCallBtn.style.anmationName= 'rotation'
+startTimerCallBtn.style.anmationName = 'rrotat'
+startTimerCallBtn.addEventListener('click', () => {
+  startTimerCallBtn.style.anmationName = 'rotation'
 
   startTimer()
 })
