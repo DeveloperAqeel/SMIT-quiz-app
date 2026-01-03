@@ -246,12 +246,12 @@ function nextQues() {
     showQuestion();
   } else {
     if (percentage >= 70) {
-      gret70 = "Congratulations! You have passed the quiz with good score.";
-      cong = " Congratulations! "
+      gret70 = "Congratulations You have passed the quiz with good score.";
+      cong = " Congratulations "
     }
     else if (percentage >= 40) {
-      gret70 = "Good effort! You have scored average in the quiz.";
-      cong = " Good Effort! "
+      gret70 = "Good effort You have scored average in the quiz.";
+      cong = " Good Effort "
     }
     document.body.innerHTML = `
     <div class="finshQuiz">
@@ -259,17 +259,32 @@ function nextQues() {
     <h2>${gret70}</h2>
     <h2>Your Score: ${score} / ${questions.length}</h2>
     <h2>Your percentage: ${percentage}%</h2>
-    <button id="btn" class="startAgain">Start Again</button>
+    <button id="btn" onclick="startAgain()">Start Again</button>
     </div>
     `;
-    document.querySelector(".startAgain")?.addEventListener("click", () => {
-      showQuestion();
-      currentIndex = 0;
-      score = 0;
-      totalTime = 20 * 60
-      startTimer()
-  });
   }
+};
+
+const startAgain = () => {
+  
+  clearInterval(Timer);
+
+  currentIndex = 0;
+  score = 0;
+  selectedOption = "";
+  totalTime = 20 * 60;
+
+  document.body.innerHTML = "";       
+  document.body.append(form, wcScreen, quesCon, timer);
+
+  showQuestion();
+  startTimer();
+  // currentIndex = 0;
+  // score = 0;
+  // selectedOption = "";
+  // totalTime = 20 * 60;
+  // showQuestion();
+  // startTimer();
 };
 
 let totalTime = 20 * 60
