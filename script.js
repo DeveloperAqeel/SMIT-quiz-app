@@ -255,36 +255,14 @@ function nextQues() {
     }
     document.body.innerHTML = `
     <div class="finshQuiz">
-    <h1>🎉🎉🎉${cong}${userName}🎉🎉🎉</h1>
+    <h1>🎉${cong}${userName}🎉</h1>
     <h2>${gret70}</h2>
     <h2>Your Score: ${score} / ${questions.length}</h2>
     <h2>Your percentage: ${percentage}%</h2>
-    <button id="btn" onclick="startAgain()">Start Again</button>
+    <a href="" id="btn">Start Again</a>
     </div>
     `;
   }
-};
-
-const startAgain = () => {
-  
-  clearInterval(Timer);
-
-  currentIndex = 0;
-  score = 0;
-  selectedOption = "";
-  totalTime = 20 * 60;
-
-  document.body.innerHTML = "";       
-  document.body.append(form, wcScreen, quesCon, timer);
-
-  showQuestion();
-  startTimer();
-  // currentIndex = 0;
-  // score = 0;
-  // selectedOption = "";
-  // totalTime = 20 * 60;
-  // showQuestion();
-  // startTimer();
 };
 
 let totalTime = 20 * 60

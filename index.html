@@ -7,7 +7,7 @@
     <title>JS Quiz App</title>
 </head>
 <body>
-    <div class="timer"><img id="timer-pic" style="width: 80px;"  src="pic-fold/ChatGPT Image Dec 28, 2025, 01_49_11 PM.png" alt=""> <span id="timer">20:00</span></div>
+    <div class="timer"><img id="timer-pic" src="pic-fold/ChatGPT Image Dec 28, 2025, 01_49_11 PM.png" alt=""> <span id="timer">20:00</span></div>
 
     <div class="login">
         <form onsubmit="formSubmit(); return false">
@@ -20,7 +20,7 @@
                 <label for="inp2">
                 Enter Your Roll number : <br>
             <br>
-            <input id="inp2" type="number" placeholder="your roll number" maxlength="6" required>
+            <input id="inp2" type="text" placeholder="your roll number" maxlength="6" required>
             </label>
             <br>
             <br>
@@ -33,12 +33,12 @@
         <p>Tip: <br>
             Don't forget your answer !</p>
         <p>Note: <br>
-           20 question you will be attemp Once you press the Start <br> button your 30 min timer will start and if you will <br> not attempts your questions before times up so you will decleared <br> Fail !</p>
+           20 question you will be attemp Once you press the Start button your 30 min timer will start and if you will not attempts your questions before times up so you will decleared Fail !</p>
         <H2>Goodluck 🥰</H2>
         <button id="btn" class="btncall" onclick="showQuestion()">Start quiz</button>
     </div>
     <div class="Ques-con">
-        <h1 id="q-num"></h1><h2 id="question"></h2>
+        <h1 id="q-num">Q0</h1><h2 id="question">Variable declare karne ke liye kaunsa keyword use hota hai?</h2>
         <div id="options">
             <button class="option-btn">Option A</button>
             <button class="option-btn">Option B</button>

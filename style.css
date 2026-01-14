@@ -8,7 +8,7 @@ body{
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
-    gap: 15px;
+    gap: 5px;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -20,7 +20,7 @@ body::before{
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px); 
+    backdrop-filter: blur(3px); 
     z-index: -2;
 }
 .finshQuiz,
@@ -48,24 +48,20 @@ body::before{
 .login input{
     background-color: rgba(255, 255, 255, 0.422);
     border-radius: 50px;
-    border:2px solid rgb(0, 0, 0);
-    padding: 15px 30px;
+    border:2px solid rgb(118, 117, 117);
+    padding: 10px 20px;
     font-size: 18px;
+    width: 100%;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
     transition: all 0.3s ease;
 }
 .login input:focus{
     color: black;
-    background-color: rgb(207, 207, 207);
-    border:2px solid rgb(0, 0, 0);
-    /* border-color: transparent; */
+    background-color: rgb(240, 238, 238);
+    border:2px solid rgb(0, 0, 0);  
     outline: none;
     transform: translateY(-7px);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    /* transform: translatex(-3px); */
-    
-    /* margin-bottom: 5px; */
 }
 .login input::placeholder{
     color: black;
@@ -78,6 +74,12 @@ body::before{
 .d-none{
     display: none;
 }
+.d-block{
+    display: block;
+}
+.d-flex{
+    display: flex;
+}
 #btn{
     background-color: blue;
     color: white;
@@ -88,7 +90,7 @@ body::before{
     transition: all 0.3s ease;
 }
 #btn:hover{
-    border:2px solid white;
+    border:2px solid rgb(4, 4, 117);
     background-color: rgb(4, 4, 117);
 }
 #nextBtn{
@@ -110,7 +112,7 @@ body::before{
     gap: 10px;
     align-items: center;
     justify-content: space-between;
-    width: 70%;
+    width: 90%;
 }
  .option-btn{
   width: 100%;
@@ -142,7 +144,11 @@ body::before{
     border-radius: 12px;
     background-color: #ffffff56;
 }
+a{
+    text-decoration: none;
+}
 #timer-pic{
+    width: 80px;
     animation: rotation 1s ease-in-out infinite reverse;
     animation-direction:alternate-reverse;
 }
@@ -152,5 +158,146 @@ body::before{
     }
     to{
         transform: rotate(360deg);
+    }
+}
+@media screen and (max-width: 1423px){
+    .wc-con,
+    .login{
+        width: 40%;
+        padding: 40px;
+        border-radius: 35px;
+        color: rgb(0, 0, 0);
+        font-size: 17px;
+        gap: 5px;
+    }
+    .finshQuiz{
+        text-align: center;
+        width: 40%;
+        padding: 30px;
+        border-radius: 35px;
+        color: rgb(0, 0, 0);
+        font-size: 17px;
+        gap: 5px;
+    }
+    .Ques-con{
+        width: 40%;
+        padding: 20px;
+        border-radius: 35px;
+        color: rgb(0, 0, 0);
+        font-size: 17px;
+        text-align: center;
+        gap: 4px;
+    }
+    body{
+        padding: 0;
+        gap: 5px;
+    }
+    .timer{
+        gap: 4px;
+        font-size: 28px;
+        padding: 0px 8px 0px 4px;
+        border-radius: 10px;
+    }
+    #timer-pic{
+        width: 60px;
+    }
+    .option-btn{
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+    }
+    #options{
+        gap: 5px;
+    }
+    .login input{
+        border-radius: 10px;
+        font-size: 15px;
+    }
+    #btn{
+        padding: 10px 15px;
+        width: 100%;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    #nextBtn{
+        padding: 9px 25px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+}
+@media screen and (max-width: 767px){
+    .wc-con,
+    .login{
+        width: 65%;
+        padding: 20px;
+        border-radius: 15px;
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+        gap: 4px;
+    }
+    .finshQuiz{
+        text-align: center;
+        width: 65%;
+        padding: 30px;
+        border-radius: 15px;
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+        gap:0px;
+    }
+    .Ques-con{
+        width: 65%;
+        padding: 20px;
+        border-radius: 15px;
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+        text-align: center;
+        gap: 4px;
+    }
+    h2,
+    .Ques-con h2{
+        margin: 10px;
+        font-size: 18px;
+    }
+    h1{
+        font-size: 25px;
+    }
+    body{
+        padding: 0;
+        gap: 0px;
+    }
+    .timer{
+        gap: 4px;
+        font-size: 22px;
+        padding: 2px 10px 2px 6px;
+        border-radius: 7px;
+    }
+    #timer-pic{
+        width: 40px;
+    }
+    .option-btn{
+        font-size: 14px;
+        padding: 7px;
+        width: 100%;
+    }
+    #options{
+        gap: 5px;
+    }
+    .login input{
+        border-radius: 10px;
+        font-size: 14px;
+        width: 80%;
+    }
+    #btn{
+        padding: 10px 15px;
+        width: 100%;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    #nextBtn{
+        padding: 7px 25px;
+        width: 100%;
+        border-radius: 7px;
+        font-size: 14px;
     }
 }
